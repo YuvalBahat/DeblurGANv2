@@ -16,7 +16,7 @@ from models.networks import get_generator
 class Predictor:
     def __init__(self, weights_path: str, model_name: str = ''):
         with open('config/config.yaml') as cfg:
-            config = yaml.load(cfg)
+            config = yaml.load(cfg, Loader=yaml.SafeLoader)
         model = get_generator(model_name or config['model'])
         model.load_state_dict(torch.load(weights_path)['model'])
         self.model = model.cuda()
@@ -97,6 +97,7 @@ def main(img_pattern: str,
     def sorted_glob(pattern):
         return sorted(glob(pattern))
 
+    if img_pattern[-1]=="/":    img_pattern += "*.png"
     imgs = sorted_glob(img_pattern)
     masks = sorted_glob(mask_pattern) if mask_pattern is not None else [None for _ in imgs]
     pairs = zip(imgs, masks)

@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Train",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/yuval-bahat/Projects/DeblurGANv2/train.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Predict",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/yuval-bahat/Projects/DeblurGANv2/predict.py",
+            "console": "integratedTerminal",
+            // "justMyCode":false,
+            "args":[
+                "/media/yuval-bahat/B0BEE15CBEE11C1A/Datasets/CTSDG/Test/dirt/DOE_capture/"
+            ]
+        },
+    ]
+}

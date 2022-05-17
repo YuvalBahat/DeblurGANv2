@@ -3,8 +3,10 @@ project: deblur_gan
 experiment_desc: fpn
 
 train:
-  files_a: &FILES_A /datasets/my_dataset/**/*.jpg
-  files_b: *FILES_A
+  # files_a: "/media/yuval-bahat/B0BEE15CBEE11C1A/Datasets/GOPRO/train/blur/*/*.png" #&FILES_A /datasets/my_dataset/**/*.jpg
+  # files_b: "/media/yuval-bahat/B0BEE15CBEE11C1A/Datasets/GOPRO/train/sharp/*/*.png" #*FILES_A
+  files_a: "/media/yuval-bahat/B0BEE15CBEE11C1A/Datasets/CTSDG/Train/dirt/DOE_capture/*.png" #&FILES_A /datasets/my_dataset/**/*.jpg
+  files_b: "/media/yuval-bahat/B0BEE15CBEE11C1A/Datasets/CTSDG/Train/dirt/gt/*.png" #*FILES_A
   size: &SIZE 256
   crop: random
   preload: &PRELOAD false
@@ -28,8 +30,10 @@ train:
     - name: sharpen
 
 val:
-  files_a: *FILES_A
-  files_b: *FILES_A
+  # files_a: "/media/yuval-bahat/B0BEE15CBEE11C1A/Datasets/GOPRO/test/blur/*/*.png" #*FILES_A
+  # files_b: "/media/yuval-bahat/B0BEE15CBEE11C1A/Datasets/GOPRO/test/sharp/*/*.png" #*FILES_A
+  files_a: "/media/yuval-bahat/B0BEE15CBEE11C1A/Datasets/CTSDG/Test/dirt/DOE_capture/*.png" #&FILES_A /datasets/my_dataset/**/*.jpg
+  files_b: "/media/yuval-bahat/B0BEE15CBEE11C1A/Datasets/CTSDG/Test/dirt/gt/*.png" #*FILES_A
   size: *SIZE
   scope: geometric
   crop: center
@@ -54,7 +58,7 @@ model:
 
 num_epochs: 200
 train_batches_per_epoch: 1000
-val_batches_per_epoch: 100
+val_batches_per_epoch: 10
 batch_size: 1
 image_size: [256, 256]
 
